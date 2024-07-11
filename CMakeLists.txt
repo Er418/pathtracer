@@ -8,10 +8,10 @@ add_executable(basic_raytracing main.cpp
         types/color.h
         types/ray.h
         hittable/hittable.h
-        hittable/sphere.h
+        hittable/geometry/sphere.h
         hittable/hittable_list.h
         hittable/hittable_list.cpp
-        hittable/sphere.cpp
+        hittable/geometry/sphere.cpp
         utils/utils.h
         raytracing/camera.cpp
         raytracing/camera.h

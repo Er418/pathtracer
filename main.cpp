@@ -1,4 +1,4 @@
-#include "hittable/sphere.h"
+#include "hittable/geometry/sphere.h"
 #include "hittable/hittable_list.h"
 #include "raytracing/camera.h"
 

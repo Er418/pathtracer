@@ -1,7 +1,7 @@
 #ifndef BASIC_RAYTRACING_SPHERE_H
 #define BASIC_RAYTRACING_SPHERE_H
 
-#include "hittable.h"
+#include "../hittable.h"
 
 class sphere : public hittable {
 public:
