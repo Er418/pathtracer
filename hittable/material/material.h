@@ -4,7 +4,7 @@
 #include <optional>
 
 #include "../../utils/utils.h"
-#include "../../basic_types/types.h"
+#include "../../types/types.h"
 #include "../hittable.h"
 
 class scatter_record {

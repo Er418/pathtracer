@@ -4,9 +4,9 @@ project(basic_raytracing)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(basic_raytracing main.cpp
-        basic_types/vec3.h
-        basic_types/color.h
-        basic_types/ray.h
+        types/vec3.h
+        types/color.h
+        types/ray.h
         hittable/hittable.h
         hittable/sphere.h
         hittable/hittable_list.h
@@ -18,8 +18,8 @@ add_executable(basic_raytracing main.cpp
         utils/utils.cpp
         utils/interval.cpp
         utils/interval.h
-        basic_types/vec3.cpp
-        basic_types/types.h
+        types/vec3.cpp
+        types/types.h
         hittable/material/material.cpp
         hittable/material/material.h
 )

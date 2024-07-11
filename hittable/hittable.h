@@ -4,7 +4,7 @@
 #include <optional>
 #include "../utils/utils.h"
 #include "../utils/interval.h"
-#include "../basic_types/types.h"
+#include "../types/types.h"
 
 class hit_record {
 public:

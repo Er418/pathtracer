@@ -2,7 +2,7 @@
 #define BASIC_RAYTRACING_CAMERA_H
 
 #include "../utils/utils.h"
-#include "../basic_types/types.h"
+#include "../types/types.h"
 #include "../hittable/hittable_list.h"
 
 class camera {
