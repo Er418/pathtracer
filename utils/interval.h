@@ -13,23 +13,13 @@ public:
 
     interval(double min, double max) : min(min), max(max) {}
 
-    inline double size() const {
-        return max - min;
-    }
+    inline double size() const;
 
-    inline bool contains(double x) const {
-        return min <= x && x <= max;
-    }
+    inline bool contains(double x) const;
 
-    inline bool surrounds(double x) const {
-        return min < x && x < max;
-    }
+    inline bool surrounds(double x) const;
 
-    double clamp(double x) const {
-        if (x < min) return min;
-        if (x > max) return max;
-        return x;
-    }
+    double clamp(double x) const;
 
     static const interval empty, universe;
 };

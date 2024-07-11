@@ -13,11 +13,11 @@ class hittable_list : public hittable {
 public:
     hittable_list() = default;
 
-    hittable_list(const hittable_ptr& object) { add(object); }
+    hittable_list(const hittable_ptr& object);
 
     void clear() { objects.clear(); }
 
-    void add(const hittable_ptr& object) { objects.push_back(object); }
+    void add(const hittable_ptr& object);
 
     std::optional<hit_record> hit(const ray &r, interval ray_t) const override;
 
