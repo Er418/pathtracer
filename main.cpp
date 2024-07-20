@@ -10,13 +10,13 @@ int main() {
     int image_width = 1000;
     int image_height = 500;
 
-    shared_ptr<material> material_ground = make_shared<lambertian>(color(0.7, 0.7, 0.0), 0.0);
+    shared_ptr<material> material_ground = make_shared<lambertian>(color(0.7, 0.7, 0.0));
     shared_ptr<material> material_far = make_shared<metal>(color(1, 0.0, 0.54));
-    shared_ptr<material> material_right = make_shared<metal>(color(0.9, 0.9, 0.9), 0.0, 0.15);
-    shared_ptr<material> material_left = make_shared<metal>(color(1, 0.54, 0), 0.0, 0.0);
-    shared_ptr<material> material_back = make_shared<metal>(color(0.54, 1, 0), 0.0, 0.05);
-    shared_ptr<material> material_big = make_shared<metal>(color(0.95, 0.95, 0.95), 0.0, 0.001);
-    shared_ptr<material> material_center = make_shared<lambertian>(color(0.0, 0.0, 0.8), 0.0);
+    shared_ptr<material> material_right = make_shared<metal>(color(0.9, 0.9, 0.9), 0.15);
+    shared_ptr<material> material_left = make_shared<metal>(color(1, 0.54, 0), 0.0);
+    shared_ptr<material> material_back = make_shared<metal>(color(0.54, 1, 0), 0.05);
+    shared_ptr<material> material_big = make_shared<metal>(color(0.95, 0.95, 0.95), 0.001);
+    shared_ptr<material> material_center = make_shared<lambertian>(color(0.0, 0.0, 0.8));
     shared_ptr<material> material_light = make_shared<emmisive>(color(1.0, 1.0, 0.2), 20);
     shared_ptr<material> material_dim_light = make_shared<emmisive>(color(1.0, 1.0, 1.0), 0.3);
 

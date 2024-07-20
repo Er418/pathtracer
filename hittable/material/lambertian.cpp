@@ -4,6 +4,6 @@ std::optional<scatter_record> lambertian::scatter(const ray &r, const hit_record
     vec3 direction_scatter = rec.normal + vec3::random_unit();;
 
     scatter_record ret(albedo);
-    ret.add(ray(rec.p, direction_scatter), 1 - absorption);
+    ret.add(ray(rec.p, direction_scatter), 1.0);
     return ret;
 }
