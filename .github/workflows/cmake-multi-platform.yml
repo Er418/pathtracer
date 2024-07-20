@@ -80,7 +80,7 @@ jobs:
       - name: Save Build
         uses: actions/upload-artifact@v4
         with:
-          name: binary-${{ matrix.os }}
+          name: binary-${{ matrix.os }}-{{ matrix.cpp-compiler }}
           path: ${{ steps.strings.outputs.build-output-dir }}
           compression-level: 0
           overwrite: true
