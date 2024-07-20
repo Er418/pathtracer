@@ -7,8 +7,8 @@
 
 int main() {
 
-    int image_width = 1000;
-    int image_height = 500;
+    int image_width = 1920;
+    int image_height = 1080;
 
     shared_ptr<material> material_ground = make_shared<lambertian>(color(0.7, 0.7, 0.0));
     shared_ptr<material> material_far = make_shared<metal>(color(1, 0.0, 0.54));
