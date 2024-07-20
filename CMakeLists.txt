@@ -20,6 +20,12 @@ add_executable(basic_raytracing main.cpp
         utils/interval.h
         types/vec3.cpp
         types/types.h
-        hittable/material/material.cpp
         hittable/material/material.h
+        hittable/material/metal.cpp
+        hittable/material/metal.h
+        hittable/material/materials.h
+        hittable/material/lambertian.cpp
+        hittable/material/lambertian.h
+        hittable/material/emmisive.cpp
+        hittable/material/emmisive.h
 )

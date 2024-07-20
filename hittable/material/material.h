@@ -24,7 +24,8 @@ public:
 
 class scatter_record {
 public:
-
+    scatter_record(const color &albedo_) :
+            albedo(albedo_) {}
 
     void add(const ray &ray_, const double &weight_) {
         rays.emplace_back(ray_, weight_);
@@ -39,8 +40,13 @@ public:
         return rays;
     }
 
+    color get_albedo() const {
+        return albedo;
+    }
+
 private:
     std::vector<scattered_ray> rays;
+    color albedo;
 };
 
 
@@ -49,6 +55,7 @@ public:
     virtual std::optional<scatter_record> scatter(const ray &r, const hit_record &rec) const {
         return std::nullopt;
     }
+
 private:
 
 };

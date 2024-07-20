@@ -5,14 +5,14 @@
 
 class lambertian : public material {
 public:
-    lambertian(const color &color_ = color(), const double &albedo_ = 1.0) :
-            color_value(color_),
-            albedo(albedo_) {}
+    lambertian(const color &color_ = color(), const double &absorption_ = 0.0) :
+            albedo(color_),
+            absorption(absorption_) {}
 
     std::optional<scatter_record> scatter(const ray &r, const hit_record &rec) const override;
 private:
-    color color_value;
-    double albedo;
+    color albedo;
+    double absorption;
 };
 
 

@@ -31,14 +31,15 @@ color camera::ray_color(const ray &r, const hittable &world, int bounce) const {
                     ret += i.color_value.value() * i.weight;
                 }
             }
+            ret = ret * scatter.value().get_albedo();
             return ret;
         }
     }
-
-
+    return color();
+    /*
     vec3 unit_direction = unit_vector(r.get_direction());
     double t = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
+    return 0 * (1.0 - t) * color(1.0, 1.0, 1.0) + 0 * t * color(0.5, 0.7, 1.0);*/
 }
 
 void camera::set_sample_size(int k) {

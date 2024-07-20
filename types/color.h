@@ -16,11 +16,11 @@ public:
     double b() const { return values[2]; };
 
 
-    int r255() const { return int(255.999 * linear_to_gamma(r())); };
+    int r255() const { return std::max(0, std::min(255, int(255.999 * linear_to_gamma(r())))); };
 
-    int g255() const { return int(255.999 * linear_to_gamma(g())); };
+    int g255() const { return std::max(0, std::min(255, int(255.999 * linear_to_gamma(g())))); };
 
-    int b255() const { return int(255.999 * linear_to_gamma(b())); };
+    int b255() const { return std::max(0, std::min(255, int(255.999 * linear_to_gamma(b())))); };
 
 
     double operator[](int i) const { return values[i]; }
@@ -64,13 +64,13 @@ public:
         return *this *= 1 / k;
     }
 
-    static double linear_to_gamma(double linear_component)
-    {
+    static double linear_to_gamma(double linear_component) {
         if (linear_component > 0)
             return sqrt(linear_component);
 
         return 0;
     }
+
 
 private:
     std::array<double, 3> values;

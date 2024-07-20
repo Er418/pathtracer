@@ -3,6 +3,7 @@
 
 #include "metal.h"
 #include "lambertian.h"
+#include "emmisive.h"
 
 inline material default_material = material();
 
