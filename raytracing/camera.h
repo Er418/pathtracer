@@ -26,6 +26,10 @@ public:
 
     int get_sample_size() const;
 
+    void set_bounce_limit(int k);
+
+    int get_bounce_limit() const;
+
 private:
     int image_width;
     int image_height;
@@ -35,7 +39,7 @@ private:
     vec3 pixel_delta_horizontal;
     vec3 pixel_delta_vertical;
 
-    int samples_per_pixel = 10;
+    int samples_per_pixel = 256;
     int bounce_limit = 20;
 
     color sample_pixel(int x, int y, const hittable &world);

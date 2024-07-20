@@ -92,3 +92,11 @@ void camera::initialize() {
     std::clog << "VUL: " << viewport_upper_left.x() << ' ' << viewport_upper_left.x() << ' '
               << viewport_upper_left.z() << ' ' << std::endl;
 }
+
+void camera::set_bounce_limit(int k) {
+    bounce_limit = k;
+}
+
+int camera::get_bounce_limit() const {
+    return bounce_limit;
+}
