@@ -1,7 +1,3 @@
-//
-// Created by Egor Dubrouski on 10.07.24.
-//
-
 #include "camera.h"
 
 void camera::render(hittable_list &world) {
@@ -23,22 +19,23 @@ void camera::render(hittable_list &world) {
 color camera::ray_color(const ray &r, const hittable &world, int bounce) const {
     auto k = world.hit(r, interval(0.001, infinity));
 
-    if (k.has_value() && bounce < 20) {
-        auto rec = k.value();
-        vec3 new_direction = rec.normal + vec3::random_in_hemisphere(rec.normal);
-        return 0.8 * ray_color(ray(rec.p, new_direction), world, bounce + 1);
+    if (k.has_value() && bounce < bounce_limit) {
+        hit_record ret = k.value();
+        auto scatter = ret.mat->scatter(r, ret);
+        if (scatter.has_value()) {
+            color ret;
+            for (const auto& i: scatter.value().get_rays()) {
+                if (i.ray_value.has_value()) {
+                    ret += ray_color(i.ray_value.value(), world, bounce + 1) * i.weight;
+                } else if (i.color_value.has_value()) {
+                    ret += i.color_value.value() * i.weight;
+                }
+            }
+            return ret;
+        }
     }
 
-/*
-        if (k.has_value() && bounce < 50) {
-            auto rec = k.value();
-            vec3 new_direction = vec3::unit_vector(r.get_direction());
-            new_direction = new_direction - 2 * dot(new_direction, unit_vector(rec.normal)) * unit_vector(rec.normal);
 
-            return 0.8 * ray_color(ray(rec.p, new_direction), world, bounce + 1) +
-                   0.2 * 0.5 * (color(rec.normal.x(), rec.normal.y(), rec.normal.z()) + color(1, 1, 1));;
-        }
-*/
     vec3 unit_direction = unit_vector(r.get_direction());
     double t = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
@@ -58,7 +55,7 @@ color camera::sample_pixel(int x, int y, const hittable &world) {
         auto pixel_sample = get_pixel_sample(x, y);
         ray r(camera_origin, pixel_sample - camera_origin);
         pixel_color += ray_color(r, world) / samples_per_pixel;
-    }
+    };
     return pixel_color;
 }
 
@@ -75,7 +72,7 @@ point3 camera::get_pixel_sample(int x, int y) {
 }
 
 void camera::initialize() {
-    double focal_length = 1.0;
+    double focal_length = 1.5;
     double viewport_height = 2.0;
     double viewport_width = viewport_height * (double(image_width) / image_height);
     camera_origin = {0, 0, 0};

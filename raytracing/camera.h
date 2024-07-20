@@ -4,6 +4,7 @@
 #include "../utils/utils.h"
 #include "../types/types.h"
 #include "../hittable/hittable_list.h"
+#include "../hittable/material/materials.h"
 
 class camera {
 public:
@@ -35,6 +36,7 @@ private:
     vec3 pixel_delta_vertical;
 
     int samples_per_pixel = 10;
+    int bounce_limit = 20;
 
     color sample_pixel(int x, int y, const hittable &world);
 

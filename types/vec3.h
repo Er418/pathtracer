@@ -76,6 +76,8 @@ public:
 
     static vec3 random_in_hemisphere(const vec3& normal);
 
+    static vec3 reflect(const vec3& ray, const vec3& normal);
+
 private:
     std::array<double, 3> values;
 };
